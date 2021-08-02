@@ -17,16 +17,16 @@
   },
   "name": "jobsearch",
   "version": "1.0.0",
-  "description": "Backend for job search app",
+  "description": "Backend for job applications tracking app",
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/isnieto/jobsearch.git"
+    "url": "git+"
   },
   "author": "isnieto",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/isnieto/jobsearch/issues"
+    "url": 
   },
-  "homepage": "https://github.com/isnieto/jobsearch#readme"
+  "homepage": ""
 }
