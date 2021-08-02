@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "description": "App for jobs applications tracking",
   "main": "./src/server.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "prisma": "^2.28.0"
+  },
   "scripts": {
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,5 +23,10 @@
   "bugs": {
     "url": "https://github.com/isnieto/jobapplications/issues"
   },
-  "homepage": "https://github.com/isnieto/jobapplications#readme"
+  "homepage": "https://github.com/isnieto/jobapplications#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2"
+  }
 }
