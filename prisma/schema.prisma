@@ -1,5 +1,7 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
+// @@map is used to map table names and @map is used to map column names. 
+// Now we have snake_case in the database but will have camelCase on the server.
 
 datasource db {
   provider = "postgresql"
@@ -8,4 +10,57 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+}
+
+model Status{
+  id            Int     @id @default(autoincrement())
+  state         String
+  active        Boolean @default(false)
+  pending       Boolean @default(false)
+  suspended     Boolean @default(false)
+  deleted       Boolean @default(false)
+  applications  Applications[]
+  @@map("status")
+}
+
+model Job{
+  id            Int     @id @default(autoincrement())
+  type          String
+  backend       Boolean @default(false)
+  frontend      Boolean @default(false)
+  fullstack     Boolean @default(false)
+  webdevelop    Boolean @default(false)
+  intership     Boolean @default(false)
+  trainee       Boolean @default(false)
+  marketing     Boolean @default(false)
+  applications  Applications[]
+  @@map("job")
+}
+
+model Applications {
+  id            Int         @id @default(autoincrement())
+  state         Status      @relation(fields: [stateId], references: [id])
+  stateId       Int         // relation scalar field  (used in the `@relation` attribute above
+  role          Job         @relation(fields: [roleId], references: [id])
+  roleId        Int         // relation scalar field  (used in the `@relation` attribute above
+  firm          Company     @relation(fields: [firmId], references: [id])
+  firmId        Int         // relation scalar field  (used in the `@relation` attribute above
+  createdAt     DateTime    @default(now()) @map("created_at")
+  updatedAt     DateTime    @updatedAt @map("updated_at") // automatically be updated anytime the row in the database is updated.
+  coverLetter   String      @map("cover_letter")
+  resume        String
+  @@map("applications")
+}
+
+model Company {
+    id              Int     @id @default(autoincrement())
+    name            String
+    sector          String
+    contact         String
+    web             String
+    email           String
+    phone           Int
+    description     String
+    applications    Applications[]
+    @@map("company")
 }
