@@ -110,7 +110,7 @@ test.js
 .tern-port
 
 # Project directories 
-
+node_modules
 /node_modules
 /public/hot
 /public/storage

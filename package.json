@@ -1,32 +1,21 @@
 {
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "joi": "^17.4.1",
-    "prisma": "^2.28.0"
-  },
-  "devDependencies": {
-    "eslint": "^7.32.0",
-    "nodemon": "^2.0.12",
-    "prettier": "^2.3.2"
-  },
-  "scripts": {
-    "start": "node ./src/server.js",
-    "dev": "nodemon ./src/server.js"
-  },
-  "name": "jobsearch",
+  "name": "node-prisma-postgresql",
   "version": "1.0.0",
-  "description": "Backend for job applications tracking app",
-  "main": "server.js",
+  "description": "App for jobs applications tracking",
+  "main": "./src/server.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
-    "url": "git+"
+    "url": "git+https://github.com/isnieto/jobapplications.git"
   },
   "author": "isnieto",
   "license": "ISC",
   "bugs": {
-    "url": 
+    "url": "https://github.com/isnieto/jobapplications/issues"
   },
-  "homepage": ""
+  "homepage": "https://github.com/isnieto/jobapplications#readme"
 }
