@@ -12,18 +12,17 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Status{
+model App_status{
   id            Int     @id @default(autoincrement())
   state         String
   active        Boolean @default(false)
   pending       Boolean @default(false)
-  suspended     Boolean @default(false)
-  deleted       Boolean @default(false)
+  rejected      Boolean @default(false)
   applications  Applications[]
-  @@map("status")
+  @@map("app_status")
 }
 
-model Job{
+model Jobs{
   id            Int     @id @default(autoincrement())
   type          String
   backend       Boolean @default(false)
@@ -39,9 +38,9 @@ model Job{
 
 model Applications {
   id            Int         @id @default(autoincrement())
-  state         Status      @relation(fields: [stateId], references: [id])
+  state         App_status      @relation(fields: [stateId], references: [id])
   stateId       Int         // relation scalar field  (used in the `@relation` attribute above
-  role          Job         @relation(fields: [roleId], references: [id])
+  role          Jobs         @relation(fields: [roleId], references: [id])
   roleId        Int         // relation scalar field  (used in the `@relation` attribute above
   firm          Company     @relation(fields: [firmId], references: [id])
   firmId        Int         // relation scalar field  (used in the `@relation` attribute above

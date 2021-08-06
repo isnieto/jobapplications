@@ -1,3 +1,8 @@
+// Load modules
+const prisma = require("./prisma/indexPrisma.js");
+
+
+
 // Create and Save a new jobsApplications
 exports.create = (req, res) => {
   
