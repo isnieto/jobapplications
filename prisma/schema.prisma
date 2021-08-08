@@ -54,7 +54,7 @@ model Applications {
 
 model Company {
     id              Int     @id @default(autoincrement())
-    name            String
+    name            String  @unique
     sector          String
     contact         String
     web             String

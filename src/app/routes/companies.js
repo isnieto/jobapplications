@@ -1,10 +1,9 @@
-//const router = require("express").Router();
 const express = require("express");
 const router = express.Router();
-const jobsController = require("../controllers/jobs.controller");
+const companiesController = require("../controllers/companies");
 
-router.get('/', jobsController.findAll);
-router.post('/add', jobsController.create);
+router.get('/', companiesController.findCompanies);
+//router.post('/add', jobsController.create);
 /* router.get('/:id', auditController.audit_get_byID);
 router.post('/', auditController.audit_create);
 router.delete('/:id', auditController.audit_delete); */
