@@ -1,0 +1,4 @@
+# Puntos a repasar
+1. Conexión PostgreSQL sin superuser (?)
+2. Creación Database sin migración
+3. PostgreSQL commandos
