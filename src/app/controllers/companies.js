@@ -50,3 +50,25 @@ exports.deleteCompany = async (req, res) => {
     res.status(404).json(apiResponse({ errors: error }));
   }
 };
+
+// Update a company 
+
+exports.updateCompany = async(req, res) => {
+  const { id, ...fields} = req.body;
+  if (!id) {
+    res.status(400).json(
+      apiResponse({
+        message: "No ID found.",
+      })
+    );
+  }
+  try{
+    let updatedData = await prisma.user.update({
+      where: { id: compId },
+      data: { ...fields },
+    })
+    res.status(200).json(apiResponse({ message: "Company data updated", data: updatedData}));
+  } catch (error) {
+    res.status(404).json(apiResponse({ errors: error }));
+  }
+}

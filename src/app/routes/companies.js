@@ -6,7 +6,7 @@ const companiesController = require("../controllers/companies");
 // Routes
 router.get('/', companiesController.findCompanies);
 router.post('/addone', companiesController.createCompany);
-//router.post('/add', jobsController.create);
+router.patch('/company', companiesController.updateCompany);
 router.delete('/:id', companiesController.deleteCompany);
 
 
