@@ -2,23 +2,27 @@
 const prisma = require("../../../prisma/indexPrisma");
 const apiResponse = require("../services/utils.js");
 
-// Create and Save a new jobsApplications
-exports.create = (req, res) => {};
-
 // Retrieve all jobsApplicationss from the database.
 exports.findAll = async (req, res) => {
   const allApplications = await prisma.applications.findMany();
-  console.log("DATA", allApplications);
   if (allApplications.length !== 0) {
-    res
+      res
       .status(200)
       .json(apiResponse({ message: "Data found", data: allApplications }));
-  } else if (allApplications.length === 0) {
-    res.status(204).json(apiResponse({ message: "No data found found" }));
-  } else {
-    res.status(500).json({ message: "Server error" });
-  }
+    } else if (allApplications.length === 0) {
+        res.status(204).json(apiResponse({ message: "No data found found" }));
+    } else {
+        res.status(500).json({ message: "Server error" });
+    }
 };
+
+// Create and Save a new jobsApplications
+exports.create = (req, res) => {
+    let data = req.body
+    //const newApplication = prism.applications.create()
+    console.log("DATA", data);
+};
+
 
 // Find a single jobsApplications with an id
 exports.findOne = (req, res) => {};

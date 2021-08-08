@@ -2,3 +2,4 @@
 1. Conexión PostgreSQL sin superuser (?)
 2. Creación Database sin migración
 3. PostgreSQL commandos
+4. Añadir seeding function to Prisma Client

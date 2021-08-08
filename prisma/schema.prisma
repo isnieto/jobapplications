@@ -29,11 +29,12 @@ model Jobs{
   frontend      Boolean @default(false)
   fullstack     Boolean @default(false)
   webdevelop    Boolean @default(false)
-  intership     Boolean @default(false)
+  internship    Boolean @default(false)
   trainee       Boolean @default(false)
   marketing     Boolean @default(false)
+  others        Boolean @default(false)
   applications  Applications[]
-  @@map("job")
+  @@map("jobs")
 }
 
 model Applications {
