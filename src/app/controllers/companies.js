@@ -18,3 +18,12 @@ exports.findCompanies = async (req, res) => {
     res.status(500).json(apiResponse({ message: "Server error" }));
   }
 };
+
+exports.createCompany = async (req, res) => {
+
+  let data = req.body;
+  let compData = await prisma.company.create({data: {...data}})
+  res.status(200).json(apiResponse({message: "Company registered"}))
+  //console.log("DATA", compData)
+
+}
