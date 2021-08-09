@@ -17,14 +17,37 @@ exports.getAll = async (req, res) => {
 };
 
 // Create and Save a new jobsApplications
-exports.addOne = (req, res) => {
+exports.addOne = async (req, res) => {
   let data = req.body;
-  //const newApplication = prism.applications.create()
-  console.log("DATA", data);
+  console.log("data", data.subject);
+
+  try {
+    let foundApplication = await prisma.applications.findUnique({
+      where: {
+        subject: data.subject,
+      },
+    });
+    console.log("application", foundApplication);
+    if (foundApplication) {
+      res
+        .status(400)
+        .json(
+          apiResponse({ message: "Sorry, this applications already exists in database" })
+        );
+    } else {
+      await prisma.applications.create({ data: { ...data } });
+      // Response 201: The request has succeeded and a new resource has been created as a result.
+      res.status(201).json(apiResponse({ message: "New application succesfully registered" }));
+    }
+  } catch (error) {
+    res.status(404).json(apiResponse({ errors: error, data: data}));
+  }
 };
 
 // Find a single jobsApplications with an id
-exports.getOne = (req, res) => {};
+exports.getOne = (req, res) => {
+  
+};
 
 // Update a jobsApplications by the id in the request
 exports.update = (req, res) => {};

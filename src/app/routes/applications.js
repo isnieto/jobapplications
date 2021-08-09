@@ -4,8 +4,8 @@ const jobsController = require("../controllers/applications");
 
 router.get('/', jobsController.getAll);
 router.post('/add', jobsController.addOne);
-/* router.get('/:id', auditController.audit_get_byID);
-router.post('/', auditController.audit_create);
-router.delete('/:id', auditController.audit_delete); */
+router.get('/:id', jobsController.getOne);
+router.patch('/', jobsController.updateOne);
+router.delete('/:id', jobsController.deleteOne); 
 
 module.exports = router;

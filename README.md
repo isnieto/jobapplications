@@ -11,6 +11,15 @@ Backend for app tracking job applications
 - [Prisma](https://www.prisma.io//)
 - [PostgreSQL](https://www.postgresql.org/)
 
+## Installation
+
+1. Install Node 14 or later. You can use the package manager of your choice.
+2. Clone this repository.
+3. Run 'npm i' to install the dependencies.
+4. Create file `.env`
+5. Run 'npm start' to start the badge server and the frontend dev server.
+6. API server can be tested with Postman. For routes see "Features".
+
 ## Features
 
 Methods Urls Actions
@@ -26,14 +35,6 @@ Methods Urls Actions
 - GET /players/ranking/loser > Retrieve best player average pencentage
 - GET /players/ranking/winner > Retrieve worst player average pencentage
 
-## Installation
-
-1. Install Node 14 or later. You can use the package manager of your choice.
-2. Clone this repository.
-3. Run 'npm i' to install the dependencies.
-4. Modify file name `.env_template` to `.env`
-5. Run 'npm start' to start the badge server and the frontend dev server.
-6. API server can be tested with Postman. For routes see "Features".
 
 ## Project structure
 

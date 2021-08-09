@@ -45,26 +45,26 @@ exports.getOneCompany = async (req, res) => {
 
 // Create one company in table company
 exports.createCompany = async (req, res) => {
-  let data = req.body;
-  let foundCompany = await prisma.company.findUnique({
-    where: {
-      name: data.name,
-    },
-  });
-  if (foundCompany) {
-    res
-      .status(400)
-      .json(
-        apiResponse({ message: "Sorry, Company already exists in database" })
-      );
-  } else {
-    try {
+  try {
+    let data = req.body;
+    let foundCompany = await prisma.company.findUnique({
+      where: {
+        name: data.name,
+      },
+    });
+    if (foundCompany) {
+      res
+        .status(400)
+        .json(
+          apiResponse({ message: "Sorry, Company already exists in database" })
+        );
+    } else {
       await prisma.company.create({ data: { ...data } });
       // Response 201: The request has succeeded and a new resource has been created as a result.
       res.status(201).json(apiResponse({ message: "Company registered" }));
-    } catch (error) {
-      res.status(404).json(apiResponse({ errors: error }));
     }
+  } catch (error) {
+    res.status(404).json(apiResponse({ errors: error }));
   }
 };
 
