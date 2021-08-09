@@ -3,7 +3,7 @@ const prisma = require("../../../prisma/indexPrisma");
 const apiResponse = require("../services/utils.js");
 
 // Retrieve all companys from datadabe
-exports.findCompanies = async (req, res) => {
+exports.getAllCompanies = async (req, res) => {
   try {
     const allCompanies = await prisma.company.findMany();
     if (allCompanies.length !== 0) {
@@ -14,7 +14,30 @@ exports.findCompanies = async (req, res) => {
         );
     } else {
       res.status(204).json(apiResponse({ message: "No data found found" }));
-    } 
+    }
+  } catch (error) {
+    res.status(404).json(apiResponse({ errors: error }));
+  }
+};
+
+// Retrieve one company by Id
+exports.getOneCompany = async (req, res) => {
+  try {
+    let compId = parseInt(req.params.id);
+    let getCompany = await prisma.company.findUnique({
+      where: {
+        id: compId,
+      },
+    });
+    if (!getCompany) {
+      res
+        .status(204)
+        .json(apiResponse({ message: "Company not found", data: getCompany }));
+    } else {
+      res
+        .status(200)
+        .json(apiResponse({ message: "Company found", data: getCompany }));
+    }
   } catch (error) {
     res.status(404).json(apiResponse({ errors: error }));
   }
@@ -51,10 +74,9 @@ exports.deleteCompany = async (req, res) => {
   }
 };
 
-// Update a company 
-
-exports.updateCompany = async(req, res) => {
-  const { id, ...fields} = req.body;
+// Update a company
+exports.updateCompany = async (req, res) => {
+  const { id, ...fields } = req.body;
   if (!id) {
     res.status(400).json(
       apiResponse({
@@ -62,13 +84,17 @@ exports.updateCompany = async(req, res) => {
       })
     );
   }
-  try{
-    let updatedData = await prisma.user.update({
-      where: { id: compId },
+  try {
+    let updatedData = await prisma.company.update({
+      where: { id: id },
       data: { ...fields },
-    })
-    res.status(200).json(apiResponse({ message: "Company data updated", data: updatedData}));
+    });
+    res
+      .status(200)
+      .json(
+        apiResponse({ message: "Company data updated", data: updatedData })
+      );
   } catch (error) {
     res.status(404).json(apiResponse({ errors: error }));
   }
-}
+};
