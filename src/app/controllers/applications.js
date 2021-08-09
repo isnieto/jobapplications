@@ -99,7 +99,31 @@ exports.updateApplication = async (req, res) => {
 };
 
 // Delete a jobsApplications with the specified id in the request
-exports.deleteApplication = async (req, res) => {};
+exports.deleteApplication = async (req, res) => {
+  try {
+    let applicationId = parseInt(req.params.id);
+    let foundApplication = await prisma.applications.findUnique({
+      where: { id: applicationId },
+    });
+    if (foundApplication) {
+      let deletedApplication = await prisma.applications.delete({
+        where: { id: applicationId },
+      });
+      res
+        .status(200)
+        .json(
+          apiResponse({
+            message: "Application succesfully deleted",
+            data: foundApplication,
+          })
+        );
+    } else {
+      res.status(204).json(apiResponse({ message: "Application not found" }));
+    }
+  } catch (error) {
+    res.status(400).json(apiResponse({ message: "Error", errors: error }));
+  }
+};
 
 // Delete all jobsApplicationss from the database.
 exports.deleteAll = async (req, res) => {};
