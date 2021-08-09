@@ -2,7 +2,9 @@ CREATE SCHEMA IF NOT EXISTS "jobs" ;
 
 CREATE TABLE "jobs"."applications" (
   "id" SERIAL PRIMARY KEY,
-  "stateId" int NOT NULL,
+  "subject" varchar(100) UNIQUE NOT NULL,
+  "description" varchar(255),
+  "stateId" int NOT NULL DEFAULT 2,
   "position" int NOT NULL,
   "company" int NOT NULL,
   "created_at" date DEFAULT (now()),

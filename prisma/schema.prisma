@@ -39,7 +39,9 @@ model Jobs{
 
 model Applications {
   id            Int         @id @default(autoincrement())
-  state         App_status      @relation(fields: [stateId], references: [id])
+  subject       String      @unique
+  description   String      
+  state         App_status  @relation(fields: [stateId], references: [id])
   stateId       Int         // relation scalar field  (used in the `@relation` attribute above
   role          Jobs         @relation(fields: [roleId], references: [id])
   roleId        Int         // relation scalar field  (used in the `@relation` attribute above

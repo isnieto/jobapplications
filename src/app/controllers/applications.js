@@ -3,7 +3,7 @@ const prisma = require("../../../prisma/indexPrisma");
 const apiResponse = require("../services/utils.js");
 
 // Retrieve all jobsApplicationss from the database.
-exports.findAll = async (req, res) => {
+exports.getAll = async (req, res) => {
   const allApplications = await prisma.applications.findMany();
   if (allApplications.length !== 0) {
     res
@@ -17,14 +17,14 @@ exports.findAll = async (req, res) => {
 };
 
 // Create and Save a new jobsApplications
-exports.create = (req, res) => {
+exports.addOne = (req, res) => {
   let data = req.body;
   //const newApplication = prism.applications.create()
   console.log("DATA", data);
 };
 
 // Find a single jobsApplications with an id
-exports.findOne = (req, res) => {};
+exports.getOne = (req, res) => {};
 
 // Update a jobsApplications by the id in the request
 exports.update = (req, res) => {};
