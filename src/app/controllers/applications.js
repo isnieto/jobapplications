@@ -17,7 +17,7 @@ exports.getAll = async (req, res) => {
 };
 
 // Create and Save a new jobsApplications
-exports.addOne = async (req, res) => {
+exports.addApplication = async (req, res) => {
   let data = req.body;
   console.log("data", data.subject);
 
@@ -29,31 +29,54 @@ exports.addOne = async (req, res) => {
     });
     console.log("application", foundApplication);
     if (foundApplication) {
-      res
-        .status(400)
-        .json(
-          apiResponse({ message: "Sorry, this applications already exists in database" })
-        );
+      res.status(400).json(
+        apiResponse({
+          message: "Sorry, this applications already exists in database",
+        })
+      );
     } else {
       await prisma.applications.create({ data: { ...data } });
       // Response 201: The request has succeeded and a new resource has been created as a result.
-      res.status(201).json(apiResponse({ message: "New application succesfully registered" }));
+      res
+        .status(201)
+        .json(
+          apiResponse({ message: "New application succesfully registered" })
+        );
     }
   } catch (error) {
-    res.status(404).json(apiResponse({ errors: error, data: data}));
+    res.status(404).json(apiResponse({ errors: error, data: data }));
   }
 };
 
 // Find a single jobsApplications with an id
-exports.getOne = (req, res) => {
-  
+exports.getOneApplication = async (req, res) => {
+  try {
+    let applicationId = parseInt(req.params.id);
+    let getApplication = await prisma.applications.findUnique({
+      where: {
+        id: applicationId,
+      },
+    });
+    console.log("!!!", getApplication);
+    if (!getApplication) {
+      res
+        .status(204)
+        .json(apiResponse({ message: "Application not found", data: getApplication }));
+    } else {
+      res
+        .status(200)
+        .json(apiResponse({ message: "Application found", data: getApplication }));
+    }
+  } catch (error) {
+    res.status(400).json(apiResponse({ message: "No data", errors: error }));
+  }
 };
 
 // Update a jobsApplications by the id in the request
-exports.update = (req, res) => {};
+exports.updateApplication = async (req, res) => {};
 
 // Delete a jobsApplications with the specified id in the request
-exports.delete = (req, res) => {};
+exports.deleteApplication = async (req, res) => {};
 
 // Delete all jobsApplicationss from the database.
-exports.deleteAll = (req, res) => {};
+exports.deleteAll = async (req, res) => {};
