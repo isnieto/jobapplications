@@ -2,15 +2,21 @@
 
 ## Description
 
-The goal of this project is to build an application to collect sistematically all data related to my job applications.
+The goal of this project is to build an application to collect, manage and store sistematically all data related to my job applications in a database.
 
-### Table of Contents.
+## Table of Contents.
 
-    - [Tech/framework](#tech)
-    - [Project structure](#project)
-    - [Api Design](#api)
+- [Installation](#big-title)
+- [Tech-framework](#tech-framework)
+- [Project Structure](#project-structure)
+- [API Design](#api-design)
+- [Testing](#testing)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Credits](#credits)
+- [License](#license)
 
-## Installation
+### Installation
 
 1. Install Node 14 or later. You can use the package manager of your choice.
 2. Clone this repository.
@@ -21,7 +27,7 @@ The goal of this project is to build an application to collect sistematically al
 
 Usage: The next section is usage, in which you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
 
-## Tech/framework
+### Tech-framework
 
 <b>Built with</b>
 
@@ -30,7 +36,7 @@ Usage: The next section is usage, in which you instruct other people on how to u
 - [Prisma](https://www.prisma.io//)
 - [PostgreSQL](https://www.postgresql.org/)
 
-## Project structure
+### Project Structure
 
 The project try to implement best practices following the following structure:
 
@@ -46,13 +52,13 @@ The project try to implement best practices following the following structure:
 - `services/` - This folder contains functions for the game play and for ranking.
 - `db/` - All files related to the database
 
-## API Design
+### API Design
 
 The API has been designed following REST API conventions and recommended best practices[<a href="https://betterprogramming.pub/22-best-practices-to-take-your-api-design-skills-to-the-next-level-65569b200b9">more info</a>]:
 
-- Use Noun in URI: for example instead of /createUser, better /user
-- Use preferly plurals: instead of GET /users/123, better: POST/users
-- HTTP verb should define action. HTTP verbs (GET, POST, PUT, DELETE) define the action to be performed on a resource.
+> - Use Noun in URI: for example instead of /createUser, better /user
+> - Use preferly plurals: instead of GET /users/123, better: POST/users
+> - HTTP verb should define action. HTTP verbs (GET, POST, PUT, DELETE) define the action to be performed on a resource.
 
 By the moment, there are just two resources sets implemented.
 First, companies:
@@ -71,26 +77,19 @@ Second, applications:
 - PATCH /applications/application > Update/Modify data of a specific application
 - DELETE /applications/{id} > Delete a specific application
 
-## Project structure
+### Testing:
 
-The project try to implement best practices following the following structure:
+### Usage: 
+The next section is usage, in which you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
 
-<p align="center">
-    <img src="https://github.com/isnieto/node-prisma-postgresql/blob/main/public/mvc_express.png">
-</p>
+### Contributing:
 
-- `server.js` - The entry point to our backend application. This file defines our express server and connects it to Postgresql database using Prisma. It also requires the routes and models we'll be using in the application.
-- `api/` - This folder contains all controller, authentication and game, and corresponding routes data
-- `config/` - This folder contains configuration for passport as well as a central location for configuration/environment variables.
-- `models/` - This folder contains the schema definitions for our mongoose and player model..
-- `middleware/` - This folder contains the authorization and authentication to get access to the API.
-- `services/` - This folder contains functions for the game play and for ranking.
-- `db/` - All files related to the database
+Larger projects often have sections on contributing to their project, in which contribution instructions are outlined. Sometimes, this is a separate file. If you have specific contribution preferences, explain them so that other developers know how to best contribute to your work. To learn more about how to help others contribute, check out the guide for setting guidelines for repository contributors.
 
-Contributing: Larger projects often have sections on contributing to their project, in which contribution instructions are outlined. Sometimes, this is a separate file. If you have specific contribution preferences, explain them so that other developers know how to best contribute to your work. To learn more about how to help others contribute, check out the guide for setting guidelines for repository contributors.
+### Credits:
 
-Credits: Include a section for credits in order to highlight and link to the authors of your project.
+Include a section for credits in order to highlight and link to the authors of your project.
 
-License: Finally, include a section for the license of your project. For more information on choosing a license, check out GitHub’s licensing guide!
+### License:
 
-### Api
+Finally, include a section for the license of your project. For more information on choosing a license, check out GitHub’s licensing guide!
