@@ -33,7 +33,7 @@ Usage: The next section is usage, in which you instruct other people on how to u
 
 - [Node](https://nodejs.org/es/)
 - [Express](https://expressjs.com/es/)
-- [Express-ejs-layouts](https://github.com/Soarez/express-ejs-layouts)
+- [Express handlesbar](https://www.npmjs.com/package/express-handlebars)
 - [Prisma](https://www.prisma.io//)
 - [PostgreSQL](https://www.postgresql.org/)
 
@@ -96,4 +96,4 @@ Include a section for credits in order to highlight and link to the authors of y
 
 This project is licensed under the [MIT license][].
 
-[MIT license]: http://creativecommons.org/licenses/MIT/
+[mit license]: http://creativecommons.org/licenses/MIT/
