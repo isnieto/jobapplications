@@ -33,6 +33,7 @@ Usage: The next section is usage, in which you instruct other people on how to u
 
 - [Node](https://nodejs.org/es/)
 - [Express](https://expressjs.com/es/)
+- [Express-ejs-layouts](https://github.com/Soarez/express-ejs-layouts)
 - [Prisma](https://www.prisma.io//)
 - [PostgreSQL](https://www.postgresql.org/)
 
